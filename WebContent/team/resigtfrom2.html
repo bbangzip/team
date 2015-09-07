@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>가입양식</title>
+<style>
+	body{ margin:0px; padding:0px;}
+	#backg{position:fixed; margin:0px; padding:0px;
+		width:100%; height:100%;
+		background:-webkit-linear-gradient(#fff 80%, green); /* For Safari 5.1 to 6.0 */
+	    background: -o-linear-gradient(#fff 80%, green); /* For Opera 11.1 to 12.0 */
+	    background: -moz-linear-gradient(#fff 80%, green); /* For Firefox 3.6 to 15 */
+	    background: no-repeat-linear-gradient(#fff 80%, green); /* Standard syntax (must be last) */
+	    
+		}
+	/*전체틀*/
+	#content{width:400px; height:480px; margin:auto; top:50%; margin-top:250px; border:1px solid gray;}
+	/*첫번째 박스*/
+	#packbox1{width:350px; height:190px; border:1px solid gray; margin-left:20px; margin-top:20px; }
+	/*두번째 박스*/
+	#packbox2{width:350px; height:160px; border:1px solid gray; margin:20px; }
+	#button{width:350px; height:50px; border:1px solid gray; background-color:green; margin:auto; margin-top:20px; 
+			color:white; font-weight:bold; font-size:20px; text-align:center; line-height:40px;}/*가입하기 버튼*/
+	#button:hover{border:1px solid green; background-color:white; color:green;}		
+	/****************************************************************************/
+	/*input 입력박스 테두리숨기기*/
+	.box>input{border:0px;}
+	.box {padding:10px; height:25px;}
+	
+	/*아이디/비밀번호 박스****************************************************************************/
+	#idbox{height:30px;}
+	#pwbox{height:30px;}
+	#pwckbox{height:30px;}
+	#userid>label{float:right;}/*@tomboy를 오른쪽 정렬*/
+	#userpw>img{float:right; height:10px;}/*pw 이미지를 오른쪽 정렬*/
+	#userpwck>img{float:right; height:10px; }/*pw 확인이미지를 오른쪽 정렬*/
+	
+	/*이름/성별/생년 박스*********************************************************************/
+	#namebox{height:30px;}	
+	#name{}
+	/****************************************************************************/
+	#sex{float:left; height:40px;}
+	.sexC{width:100px; float:left; }
+	.hhh>input{display:none;}
+	.hhh{background-color:white; color:green; border:1px solid green; text-align:center;}
+	
+	/*****************************************************************************/
+	#birth{margin-top:20px; height:30px;}
+	#month{width:90px;}
+	#birthday{width:90px;}
+	/*에러처리*************************************************************************/
+	.error {color:red; display:none;}
+</style>
+</head>
+<body>
+<div id="backg">
+<form method="POST" name="formName">
+<section id="content">
+	
+	<!-- 아이디 패스워드를 담은 박스 --------------------------------------------------------------------------------->
+	<section id="packbox1">
+		
+		<!-- 아이디상자 --------------------------------------------------------------------------------------------->
+		<div class="box" id="idbox">
+			<input type="text"  id="userid" value="아이디" size="25" required onClick="errorMsgCheck(this)" maxlength="8" >
+			<label>@tumboy.com</label>
+			<div id="idMsg" class="error">필수 정보입니다.</div>
+			<div id="idMsg2" class="error" >6~8자 소문자로 입력하세요</div>
+		</div>
+		
+		<!-- 비밀번호 상자 ----------------------------------------------------------------------------------------->
+		<div class="box" id="pwbox">
+			<input type="text" id="userpw" maxlength="8" value="비밀번호" size="30" required onClick="errorMsgCheck(this)">
+			<img src="pw.jpg" id="pwimg">
+			<div id="pwMsg" class="error">필수 정보입니다.</div>
+			<div id="pwMsg2" class="error">6~8자 알파벳 대소문자, 숫자, 특수문자를 혼합하여 만드세요</div>
+		</div>
+		
+		<!--비밀번호 확인상자------------------------------------------------------------------------------------->
+		<div class="box" id="pwckbox">
+			<input type="text"  id="userpwck" maxlength="8" value="비밀번호확인" size="30"  required onClick="errorMsgCheck(this)">
+			<img src="pw.jpg" id="pwckimg">
+			<div id="pwckMsg" class="error">필수 정보입니다.</div>
+			<div id="pwckMsg2" class="error">비밀번호가 다릅니다</div>
+		</div>
+	</section>
+	
+	<!-- 이름/성별/생년월일/메일을 담은 박스------------------------------------------------------------------------------>
+	<section id="packbox2">
+	
+		<!--이름은 공란만체크함-------------------------------------------------------------------------------------------->
+		 <div class="box" id="namebox">
+		 	<input type="text"  id="name" value="이름" size="40"  maxlength="5" onClick="errorMsgCheck(this)"> 
+		 	<div id="nameMsg" class="error">필수 정보입니다.</div>
+		 </div>
+		 
+		 <!--성별관련 라디오 상자 ---------------------------------------------------------------------------------------->
+		 <div id="sex"  class="box">
+		 	<div class="sexC">성별</div>
+		 	<div class="sexC hhh"  id="manc"  onclick="man()"> 남<input type="radio" value="male" name="jender"></div>
+		 	<div class="sexC hhh" id="womanc"  onclick="women()">여<input type="radio" value="female" name="jender" ></div>
+		 </div>
+		 
+		 <!-- 생년월일입력박스--------------------------------------------------------------------------------------------->
+		 <div id="birth"  class="box">
+		 	<input type="number"  class="birthbox" value="1990" size="9"  onfocus="value=''" maxlength="4" min="1990" max="2015">
+			 <select id="month">
+				 <option value="1">1</option>
+				 <option value="2">2</option>
+				 <option value="3">3</option>
+				 <option value="4">4</option>
+				 <option value="5">5</option>
+				 <option value="6">6</option>
+				 <option value="7">7</option>
+				 <option value="8">8</option>
+				 <option value="9">9</option>
+				 <option value="10">10</option>
+				 <option value="11">11</option>
+				 <option value="12">12</option>
+			 </select>월
+			<input type="number" value="1"  min="1" max="31" class="birthbox" id="birthday" size="20"  onfocus="value=''">일
+		</div>
+		
+		<!-- 생년월일입력박스끝------------------------------------------------------------------------------------------>
+	</section>
+	
+	<!-- 가입하기 submit 기능을 가진 버튼 ----------------------------------------------------------------------------------->
+	<div id="button" onClick="blankCheck();">√가입하기</div>
+</section>
+
+</form>
+
+</div>
+</body>
+
+<script>
+var ckid= document.getElementById("userid");
+var ckpw= document.getElementById("userpw");
+var ckpwck= document.getElementById("userpwck");
+var ckname= document.getElementById("name");
+//////////////////////////////////////////
+var iderr = document.getElementById("idMsg");
+var iderr2 = document.getElementById("idMsg2");
+var pwerr = document.getElementById("pwMsg")
+var pwerr2 = document.getElementById("pwMsg2");
+var pwimgerr = document.getElementById("pwimg");
+var pwckerr = document.getElementById("pwckMsg");
+var pwckerr2 = document.getElementById("pwckMsg2");
+var pwckimgerr = document.getElementById("pwckimg");
+var nameerr = document.getElementById("nameMsg");
+
+
+
+//////빈칸체크 //아이디 비밀번호 비밀번호 확인 이름 생년월일	
+	function blankCheck(){
+		//빈칸을 체크하여 필수입력에러메시지 div를 보여줌
+		if (ckid.value==null||ckid.value==""||ckid.value=="아이디"||ckpw.value==null||ckpw.value==""||ckpw.value=="비밀번호"||ckpwck.value==null||ckpwck.value==""||ckpwck.value=="비밀번호확인"||ckname.value==null||ckname.value==""||ckname.value=="이름"){
+			iderr.style.display = "block"; 
+			pwerr.style.display = "block";
+			pwimgerr.src="pwc.jpg";
+			pwckerr.style.display = "block";
+			pwckerr2.style.display = "block";
+			pwckimgerr.src="pwc.jpg";
+			nameerr.style.display = "block";
+		}else{
+			idCheker(); //아이디체크함수호출
+			pwChecker();//비밀번호체크함수호출
+			pwckChecker();//비밀번호확인체크함수호출
+			window.open("list.html"); //사실여기서 이렇게 열면 안됩니다.	
+		}
+	}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////아이디체크함수//영문6~8자
+	function idCheker(){
+		var idsample = ckid.value;//id 입력받은 값을 저장하는 변수
+		//6~8자가 아닌경우 에러메시지
+		if(idsample.length <6 || idsample.length > 8){
+			iderr2.style.display = "block"; //에러메시지출력
+		}else{//소문자인지 확인
+			for(i=0; i<idsample.length; i++)
+				var oneChar = idsample.charAt(i);//입력받은 글자중 한문자 구하기
+				if(oneChar< 'a'|| oneChar>'z'){ //a-z 이외의 문자가들어오면
+				iderr2.style.display = "block"; //에러메시지출력
+				}
+		}
+	}
+	
+	///////비밀번호확인체크함수호출/////////////////////////////////////////////
+	function pwChecker(){
+		var pwv = ckpw.value;
+		var charCnt=0;
+		var numCnt = 0;
+		var speCnt = 0;
+		var str = "~!@#$%^&*?.,;"
+		
+		if(pwv.length <6 || pwv.length > 8){//6~8자가 아닌경우 에러메시지
+			pwerr2.style.display = "block"; //에러메시지출력
+		}
+		
+		for(i=0; i<pwv.length; i++){
+			var indexChar = pwv.charAt(i);//입력된 문자에서 한 글자 추출
+		 
+			if(indexChar>='A' && indexChar<='Z' || indexChar>='a'&& indexChar<='z'){ //a~Z인지 입력여부확인
+				charCnt++;
+			}
+			if(indexChar>=0 && indexChar<=9){ //숫자 입력여부 확인
+				numCnt++;
+			}
+			if(str.match(indexChar)!=null){//특수문자 입력여부 확인
+ 				speCnt++;
+			}
+		}
+		
+		if(charCnt<1 || numCnt<1 || speCnt<1){
+			pwerr2.style.display = "block"; //비밀번호는 문자,숫자,특수문자를 넣어야 합니다.에러메시지출력
+			
+			//박스크기를 넓힘
+			document.getElementById("pwbox").style.height = "70px";
+			document.getElementById("packbox1").style.height = "230px";
+			document.getElementById("content").style.height = "530px";
+		}
+	
+	}
+	function pwckChecker(){//비밀번호 입력한것과 비밀번호 확인용 문자가 다르면 에러메시지/////////////////////////////////////////
+		if(ckpw.value !== ckpwck.value){
+			pwckerr2.style.display="block";//입력한 비밀번호가 다릅니다.에러메시지 출력			
+			//박스크기를 넓힘
+			document.getElementById("pwckbox").style.height = "30px";
+			document.getElementById("packbox1").style.height = "230px";
+			document.getElementById("content").style.height = "530px";
+		}
+		
+	}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+//////입력 박스를 선택하면 에러메시지를 사라지게함 
+	function errorMsgCheck(i){
+		i.value = "";
+		
+		//늘어났던 박스크기를 다시 원래의 크기로 돌림
+		document.getElementById("pwbox").style.height = "30px";
+		document.getElementById("packbox1").style.height = "190px";
+		document.getElementById("content").style.height = "480px";
+		
+		//에러메시지가 나온것을 모두 안보이게함
+		iderr.style.display = "none"; 
+		iderr2.style.display = "none"; 
+		pwerr.style.display = "none";
+		pwerr2.style.display = "none";
+		pwimgerr.src="pw.jpg";
+		pwckerr.style.display = "none";
+		pwckerr2.style.display="none";
+		pwckimgerr.src="pw.jpg";
+		nameerr.style.display = "none";
+	}
+///////////////남자 여자 선택시 div 배경색 변경
+	function man() {
+		document.getElementById("manc").style.color = "white";			//글자색 흰색
+		document.getElementById("manc").style.backgroundColor = "green"; //배경색 녹색
+		document.formName.jender[0].checked = true;						// 라디오 버튼 선택
+		document.getElementById("womanc").style.color = "green";		// 여자상자 색상 반전
+		document.getElementById("womanc").style.backgroundColor = "white";//여자상자 색상 반전
+	}
+	function women() {
+		document.getElementById("womanc").style.color = "white";
+		document.getElementById("womanc").style.backgroundColor = "green";
+		document.formName.jender[1].checked = true;
+		document.getElementById("manc").style.color = "green";
+		document.getElementById("manc").style.backgroundColor = "white";
+	}	
+</script>
+
+
+</html>
