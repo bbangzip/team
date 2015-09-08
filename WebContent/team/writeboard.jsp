@@ -128,6 +128,15 @@ geocoder.addr2coord('<%=dong %>', function(status, result) {
     	 // 지도를 생성합니다    
     	 var map = new daum.maps.Map(mapContainer, mapOption); 
     	 
+
+    	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+    	var zoomControl = new daum.maps.ZoomControl();
+    	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+    	 
+    	 
+    	 // 지도의 현재 중심좌표를 얻어옵니다 
+    	 var center = map.getCenter(); 
+      	 document.getElementById("location").value= center; //일단 중심좌표값을 location에 저장
     	 
         var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
 
