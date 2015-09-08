@@ -17,19 +17,20 @@
 <style>
 	body{padding:0px;margin:0px}
 	#main{width:1000px; 
-		  heigth:1000px;
+		  heigth:1300px;
 		  margin-left:50%;
 		  left:-500px;
 		  position:relative;
 		  top:0px;}
 	
 	#listbox{width:600px; 
-			 height:400px; 
+			 height:550px; 
 			 position:relative; 
 			 left:50%; 
 			 margin-left:-300px; 
 			 top:0px;
-			 border:1px solid gray;}
+			 border:1px solid gray;
+			 background-color:#D3E1EB;}
 		#list{ list-style-type:none;}
 		#list li:nth-child(2n+1) {width:100px; float:left; text-align:right; line-height:50px; padding-right:5px;}
 		#list li:nth-child(2n) {line-height:50px;}
@@ -62,7 +63,7 @@
 <body>
 
 <!-- 배너부분 -->
-	<%@ include file="header.jsp" %>	
+		
 
 <div id="main">
 <!-- 본문부분 -->
@@ -89,10 +90,12 @@
 			<li><textarea rows="6" name="content" cols="50" maxlength="500" minlength="1" required title="최소 1글자 이상적으셔야합니다."></textarea></li>
 			<li>비밀번호</li>
 			<li><input type="text" name="listPwd" size="30" maxlength="12"  minlength="4" required title="최소 4글자 이상적으셔야합니다."></li></li>
-			<li>이미지</li>
-			<li><input type="file" name="filename1" id="filename1"/><br/>
-			<input type="file" name="filename2" id="filename2"/><br/>
-			<input type="file" name="filename3" id="filename3"/><br/></li>
+			<li>이미지1</li>
+			<li><input type="file" name="filename1" id="filename1"/></li>
+			<li>이미지2</li>
+			<li><input type="file" name="filename2" id="filename2"/></li>
+			<li>이미지3</li>
+			<li><input type="file" name="filename3" id="filename3"/></li>
 			<li>위치</li>
 			<li>서울시
 				<input type="hidden"  value="<%=gu %>">|<%=gu %>

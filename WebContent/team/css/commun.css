@@ -1,7 +1,7 @@
 
 @CHARSET "UTF-8";
 
-	#indexBody{margin:0px; padding:0px; background-color:rgb(237,239,237);}
+	#indexBody{margin:0px; padding:0px; background-color:#dbecfd; }
 	ul,li{padding:0px; margin:0px;}
 	#indexUl, #indexUl li{padding:0px; margin:0px;}
 	a:link {text-decoration: none; color:black;} /*2015.09.04 12시*/
@@ -77,7 +77,7 @@
 		.nav_li:nth-child(5){width:190px;}    /*마지막li 버  튼의 크기를 조절함 */
 		
 		
-		#searchbtn{background: rgb(255,90,95); /*검색버튼*/ 
+		#searchbtn{background: #67a2d5; /*검색버튼*/ 
 					width:180px; 
 					height:50px; 
 					margin:0px;
@@ -88,9 +88,9 @@
 					line-height:50px; 
 					font-family:돋움; font-weight:bold; font-size:16px;
 					}
-		#searchbtn:hover{background-color:white; /*검색버튼 hover*/ 
-						width:175px; 
-						color:rgb(255,90,95);}	
+		#searchbtn:hover{background-color:#b5d8fa; /*검색버튼 hover*/ 
+						width:180px; 
+						color:black;}	
 	
 	/*본문박스- 검은색 bar를 제외한 아랫부분*************************************************************************************/
 	#mylocalnews{width:800px; 
@@ -119,15 +119,15 @@
 					 	 text-align:center;
 					 	 line-height:200px; 
 						 font-family:돋움; font-weight:bold; font-size:40px;
-					 	 background-color:#54a3c5;}
-		#indexUl>li div:hover{background-color:white; color:#54a3c5;}
+					 	 background-color:#fff;}
+		#indexUl>li div:hover{background-color:#93bce1;}
 		
 	/*맨 하단부*************************************************************************************/
 	#indexFooter{width:100%; 
 				 height:100px; 
 				 position:relative;
 				 top:0px;
-				 background-color:#CCC; 
+				 background-color:#93bce1; 
 				 text-align: center;}	
 /**index.jsp용 CSS끝************************************************************************************/
 /**************************************************************************************/

@@ -110,26 +110,26 @@
 <style>
 	body{padding:0px;margin:0px}
 	ul li{padding:0px;margin:0px;list-style-type:none;float:left}
-	#main{width:1000px; height:1200px;background-color:yellow;margin-left:50%;
+	#main{width:1000px; height:1200px;background-color:#D3E1EB;margin-left:50%;
 	left:-500px;position:absolute}
-	#Banner{width:100%;height:100px;background-color:red;position:absolute}
+	#Banner{width:100%;height:100px;background-color:#67A2D5;position:absolute}
 	#Banner>h1{font-size:40px;text-align:center;line-height:100px}
 	#inform{position:absolute;width:200px;height:100px;top:0px;left:850px;}
-	#map{width:100%;height:500px;top:100px;background-color:yellow;position:absolute}
+	#map{width:100%;height:500px;top:100px;position:absolute}
 	#goomap{width:96%;height:90%;margin:2% 2% 2% 2%}
-	#board{width:100%;height:1200px;top:600px;background-color:green;position:absolute}
-	#literBoard{width:950px;height:500px;background-color:pink;margin:0% 2% 0% 2%}
+	#board{width:100%;height:1200px;top:600px;position:absolute}
+	#literBoard{width:950px;height:500px;margin:0% 2% 0% 2%}
 	
 	#literBoard input{position:absolute;top:450px;left:450px;}
-	#imgBoard{width:95%;height:500px;background-color:blue;margin:0% 2% 0% 2%;position:absolute;top:600px}
-	#imgShow li{width:200px;height:140px;background-color:yellow;list-style-type:none;float:left;
+	#imgBoard{width:1000px;height:500px;margin:0px;background-color:#D3E1EB ;position:absolute;top:600px}
+	#imgShow li{width:200px;height:140px;list-style-type:none;float:left;
 		border:1px solid gray;margin:10px 45px 10px 45px;}
 	#boardMain .descstyle{background-color:white;width:150px;border:1px solid gray}
-	#navi1{width:100%;height:100px;position:absolute;background-color:red;text-align:center}
-	#navi2{position:absolute;width:100%;height:100px;background-color:red;text-align:center;bottom:0px}
+	#navi1{width:950px;height:100px;position:absolute;text-align:center}
+	#navi2{position:absolute;width:100%;height:100px;text-align:center;bottom:0px}
 	#pageList{background-color:white}
-	#navi1>ul>li{background-color:yellow;position:relative;left:450px}
-	#navi1>ul>li{background-color:yellow;position:relative;left:450px}
+	#navi1>ul>li{position:relative;left:450px}
+	#navi1>ul>li{position:relative;left:450px}
 </style>
 <script>
 	$(function(){
@@ -279,7 +279,9 @@
 				</form>
 			</div>
 		</div>
+		
 		<div id="imgBoard">
+		<hr>
 			<label>이미지</label>
 			<ul id="imgShow">
 				<%

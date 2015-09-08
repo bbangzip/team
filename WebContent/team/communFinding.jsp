@@ -30,25 +30,35 @@
 <style>
 	body{padding:0px;margin:0px}
 	ul, li{margin:0px; padding:0px; list-style-type:none; float:left}
-	#main{width:1000px; height:1000px;background-color:yellow;margin-left:50%;
+	#main{width:1000px; height:1000px;margin-left:50%;
 	left:-500px;position:absolute;}
-	#Banner{width:100%;height:100px;background-color:red;position:absolute;}
+	#Banner{width:100%;height:100px; background-color:#67A2D5;
+	position:absolute;}
 	#Banner>h1{font-size:40px;text-align:center;line-height:100px}
 	#inform{position:absolute;width:200px;height:100px;top:0px;left:850px;}
 	#map{width:100%;height:400px;top:100px;position:absolute;}
 	#goomap{width:96%;height:90%;margin:2% 2% 2% 2%}
 	#localFind{width:100%;height:100px;top:500px;text-align:center;line-height:100px;position:absolute;}
 	/**************************************************************************************/
-	#searchbox{width:100%; height:100px; background-color:black; opacity: 0.5;position:absolute;}
+	#searchbox{width:100%; height:100px; background-color:#67A2D5;
+	
+	 
+	position:absolute;}
 		#scbox_main{width:800px; height:50px; background-color:white; position:relative; left:100px; top:30px }
 		#scbox_main>div{float:left; margin:0px; padding:0px;}
 /*지역찾기*/	#scbox_main>div{width:158px; height:49px; font-weight:bold;  text-align: center; line-height:50px; border:1px solid gray;position:relative}	
-	#searchBtn{background-color: rgb(255,90,95); width:130px; height:50px; color:white;}
-			#searchBtn:hover{background-color:white; color:rgb(255,90,95);}	
+	#searchBtn{background-color: #8BD6A0; width:130px; height:50px; color:white;}
+			#searchBtn:hover{background-color:white; color:#8BD6A0; font-weight:bold}	
 	/**************************************************************************************/
-	#smallDesc{width:100%;height:400px;top:600px;text-align:right; position:absolute;}
-	#descript{margin:50px 0px 0px 50px}
-	.descstyle{background-color:yellow;width:200px;border:1px solid gray;text-align:center}
+	#smallDesc{width:100%;height:400px;top:600px;text-align:right; position:absolute;  
+	background-color:#D3E1EB;
+	
+	
+	} /*commun*/
+	#descript{margin:50px 0px 0px 50px;} 
+	.descstyle{background-color: #CDD6DB;/*지역회원*/
+	
+	width:200px;border:1px solid gray;text-align:center}
 </style>
 <script>
 
