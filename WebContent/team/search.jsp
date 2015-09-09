@@ -48,7 +48,7 @@ function getAddr(){
 				<%
 					}else if(session.getAttribute("loginCheck")!=null && session.getAttribute("loginCheck").equals("Y")){
 				%>
-						<li class="nav_li" id="mylocal_af">내지역보기</li>
+						<li class="nav_li" id="mylocal_af">내지역보기▼</li>
 				<%} %>
 				<!--2015.09.04 12시 수정 끝 -->
 				

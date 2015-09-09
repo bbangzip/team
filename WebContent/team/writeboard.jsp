@@ -168,7 +168,7 @@ geocoder.addr2coord('<%=dong %>', function(status, result) {
 	<div id="bottonbox_inside">
 		<input type="submit" value="완료" style="width:80px">
 		<input type="reset" value="초기화" style="width:80px">
-		<input type="button" value="취소" style="width:80px" onClick="location.href='communFinding.jsp'">
+		<input type="button" value="취소" style="width:80px"  onClick="location.href='communFinding.jsp'">
 	</div>
 </div>
 </form>

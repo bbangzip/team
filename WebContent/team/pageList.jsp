@@ -70,7 +70,7 @@ hr{width:500px; float:left;}
 </head>
 <body>
 <label>방명록 리스트 : <%=pNum%></label><br/>
-<label><a href="../index.jsp">홈</a></label>
+<label><a href="index.jsp">홈</a></label>
 
 <br/>
 <div id="list">
@@ -139,7 +139,7 @@ hr{width:500px; float:left;}
 		<li title="다음페이지5"><a href="pageList.jsp?num=<%=pStart+pCnt%>">▶▶ </a></li>
 
 	<%}%>
-	</ul><br/><br/>
+	</ul><br/><br/><br/><br/>
 	
 <label id="pWriteBtn"><input type="button" value="쪽지쓰기" onClick="location.href='page.jsp'">
 </label>
