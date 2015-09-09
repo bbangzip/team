@@ -8,12 +8,21 @@
 <script src="../js/jquery-1.11.3.min.js"></script>
 <script src="../js/register.js"></script>
 <style>
+	body{background:url("img/blur-clould.jpg") no-repeat center center fixed;  background-size:cover; margin:0px; padding:0px;}
 	#pic img{width:700px;}
 	#register{width:700px; height:542px; position:absolute; left:50%; margin-left:-350px;top:15%;
 		border:1px solid gray}
-	#navi{width:150px;height:400px;background-color:pink;
-		text-align:right;position:absolute}
-	#content{width:550px;height:400px;position:absolute;left:150px}
+	#navi{width:150px;
+		  height:400px;
+		  text-align:right;
+		  position:absolute;}
+	#navi ul {list-style-type:none; margin-right:10px;}
+	#navi li {height:50px;  margin:0px;}
+	#content{width:550px;
+			 height:400px;
+			 position:absolute;
+			 left:150px}
+	#content ul{list-style-type:none;}
 	#Btn{position:relative;left:330px;top:400px}
 </style>
 <script>
@@ -27,49 +36,65 @@
 </script>
 </head>
 <body>
-<div id="register">
-	<div id="pic">
-		<img src="img/registBanner.jpg">
+<div id="register"><!--전체를 감싸는 틀 -->
+
+<div id="pic"><img src="img/registBanner.jpg"></div><!-- 상단부 배너이미지 -->
+
+
+
+<form method="post" action="registerOk.jsp" id="registerChk" name="frm">
+
+	<div id="navi">
+		<ul>
+			<li>아이디</li>
+			<li>비밀번호</li>
+			<li>비밀번호확인</li>
+			<li>이름</li>
+			<li>우편 번호</li>
+			<li>주소</li>
+			<li>전화번호</li>
+			<li>이메일</li>
+		</ul>
 	</div>
-	<div id="navi"><br/>
-		<label>아이디</label><br/><br/>
-		<label>비밀번호</label><br/><br/>
-		<label>비밀번호 확인</label><br/><br/><br/>
-		<label>이름</label><br/><br/>
-		<label>우편 번호</label><br/>
-		<label>주소</label><br/><br/><br/>
-		<label>전화번호</label><br/><br/>
-		<label>이메일</label><br/><br/>
-		
-	</div>
+	
+	
 	<div id="content">
-	<form method="post" action="registerOk.jsp" id="registerChk" name="frm">
-		<label style=color:red>＊　</label><input type="text" name="userId" id="Id" maxlength="12">		
-		<input type="button" value="ID중복검사" name="userIdChk" id="userIdChk" onClick="idCheckWin()">
-		<input type="hidden" value="1" name="idChk" id="idChk"/><br/>
-		<label>　　아이디는 영문,숫자 조합으로 하셔야 합니다.[4자리 이상 12자리 이하]<br/>
-		　　아이디는 <span style=color:red>소문자</span>로 저장됩니다</label><br/>
-		<label style=color:red>＊　</label><input type="text" name="userPwd" id="pass"><br/>
-		<label>　비밀번호는 4자리 이상 12자리 이하로 입력해주세요.</label><br/>
-		<label style=color:red>＊　</label><input type="text" id="passCheck" name="userPwd2"><br/><br/>
-		<label style=color:red>＊　</label><input type="text" id="name" name="userName"><br/><br/>
-		<label style=color:red>＊　</label><input type="text" id="zipCode" name="zipCode" maxlength="5">
-		<input type="button" value="검색" onClick="zipWin()"> <br/>
-		<label style=color:red>＊　</label><input type="text" id="addr1" name="addr1"><br/>
-		<label>　　</label><input type="text" id="addr2" name="addr2"><br/><br/>
-		<label style=color:red>＊　</label><select name="tel1">
+		<ul id="content_ul">
+			<li><input type="text" name="userId" id="Id" maxlength="12">		
+				<input type="button" value="ID중복검사" name="userIdChk" id="userIdChk" onClick="idCheckWin()">
+			
+			<li><input type="hidden" value="1" name="idChk" id="idChk"/></li>
+			<li>
+				아이디는 영문,숫자 조합으로 하셔야 합니다.[4자리 이상 12자리 이하]
+				아이디는 소문자로 저장됩니다
+			</li>
+			
+			<li><input type="text" name="userPwd" id="pass"></li>
+			<li>비밀번호는 4자리 이상 12자리 이하로 입력해주세요.</li>
+			<li><input type="text" id="passCheck" name="userPwd2"></li>
+				<input type="text" id="name" name="userName"><br/><br/>
+				<input type="text" id="zipCode" name="zipCode" maxlength="5">
+				<input type="button" value="검색" onClick="zipWin()"> <br/>
+				<input type="text" id="addr1" name="addr1"><br/>
+				<input type="text" id="addr2" name="addr2"  size="40" ><br/><br/>
+				<select name="tel1">
 			<option value="010">010</option>
 		</select>
 		-<input type="text" style="width:60px" id="tel2" name="tel2" maxlength="4">-<input type="text" style=width:60px id="tel3" name="tel3" maxlength="4"><br/><br/>
-		<label>　　</label>
-		<label style=color:red>＊　</label><input type="text" id="email" name="email"><br/><br/>
-		</div>
+		
+		<input type="text" id="email" name="email"><br/><br/>
+		
+		</ul>
+	</div>
+	
 	<div id="Btn">
 		<input type="submit" value="등록">
 		<input type="reset" value="취소">
 	</div>
-	</form>
-	
+
+
+
+</form>
 </div>
 </body>
 </html>

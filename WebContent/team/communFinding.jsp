@@ -17,6 +17,12 @@
 	int cnt = cd.getLocal(dong);
 	
 	List<ListVO> lst = cd.getDesc(dong, 2);
+	
+	///////검색창
+	List<ZipVO> dataList = new ArrayList<ZipVO>();
+	cd.zipSearch(dataList);
+	List<ZipVO> dataList2 = new ArrayList<ZipVO>();
+	cd.zipSearch2(dataList2, gu);
 
 %>
 <!DOCTYPE html>
@@ -41,13 +47,14 @@
 	#localFind{width:100%;height:100px;top:500px;text-align:center;line-height:100px;position:absolute;}
 	/**************************************************************************************/
 	#searchbox{width:100%; height:100px; background-color:#67A2D5;
-	
-	 
 	position:absolute;}
 		#scbox_main{width:800px; height:50px; background-color:white; position:relative; left:100px; top:30px }
-		#scbox_main>div{float:left; margin:0px; padding:0px;}
-/*지역찾기*/	#scbox_main>div{width:158px; height:49px; font-weight:bold;  text-align: center; line-height:50px; border:1px solid gray;position:relative}	
-	#searchBtn{background-color: #8BD6A0; width:130px; height:50px; color:white;}
+		#scbox_main>div{float:left; margin:0px; padding:0px;width:158px; height:50px; font-weight:bold;  text-align: center; line-height:50px; border:1px solid gray;position:relative}
+		#guShow{width:158px; height:50px;}	
+		#dongShow{width:158px; height:50px;}	
+			
+			
+			#searchBtn{background-color: #8BD6A0; width:130px; height:50px; color:white;}
 			#searchBtn:hover{background-color:white; color:#8BD6A0; font-weight:bold}	
 	/**************************************************************************************/
 	#smallDesc{width:100%;height:400px;top:600px;text-align:right; position:absolute;  
@@ -64,6 +71,7 @@
 
 	$(function(){
 		//지도 표시
+		<%if(dong!=null&&dong!="")%>{
 		$('#goomap').gMap({
 			address:"<%=dong%>",
 			maptype:'ROADMAP',//종류= ROADMAP,HYBRID,SATELLITE,TERRAIN
@@ -81,6 +89,13 @@
 				overViewMapControl: true
 			}
 		});
+		}
+		$("#guShow").on('change',function(){
+		 	location.href="communFinding.jsp?gu="+$('#guShow').val()+"&dong="+$('#dongShow').val()});
+		$("#dongShow").on('change',function(){
+
+		 	location.href="communFinding.jsp?dong="+$('#dongShow').val()+"&gu="+$('#guShow').val()});
+		
 	});
 	function myCommunMove(){
 		<%
@@ -108,13 +123,21 @@
 		<%
 		if(session.getAttribute("loginCheck")!=null && session.getAttribute("loginCheck").equals("Y")){
 		%>
-			location.href='readBoard.jsp?subject=<%=member.getSubJect()%>&writeId=<%=member.getUserId()%>';			
+			location.href='readboard.jsp?subject=<%=member.getSubJect()%>&id=<%=member.getUserId()%>';			
 		<%
 		}else if(session.getAttribute("loginCheck")==null || session.getAttribute("loginCheck").equals("N")){
 		%>
 			location.href="login.jsp";
 		<%}%>
 	}
+	function getAddr(){
+		
+		var addr = document.getElementById("guShow").value;
+		var gu = document.getElementById("dongShow").value;
+		
+		location.href="communFinding.jsp?gu="+addr+"&dong="+gu;
+	}
+	
 	
 	
 	
@@ -138,9 +161,34 @@
 		<div id="scbox_main"> <!-- 실제 검색어창이 있는 부분 -->
 			<div>지역찾기</div>
 			<div>서울시</div>
-			<div id="local1"><%=gu%> ▼</div>
-			<div onClick="dropmenu2()"><%=dong%> ▼</div>
-			<div id="searchBtn" onClick="location.href='communFinding.jsp?gu=<%=gu%>&dong=<%=dong%>">찾기</div>
+			<div id="local1">
+				<form method="get" action="communFinding.jsp">
+				 <select id="guShow" name="guShow" size="1">
+				 	<%for(int i=0; i<dataList.size(); i++){
+				 		ZipVO zv = new ZipVO();
+				 		zv = dataList.get(i);
+							if(zv.getGu()!=null){%>
+								<option value="<%=zv.getGu()%>" <%if(gu.equals(zv.getGu())){out.println("selected");} %>><%=zv.getGu()%></option>
+						<%	}
+				 	} %>
+				 </select>
+				 </form>
+			</div>
+			<div>
+				 <select id="dongShow" name="dongShow" size="1">
+					<%for(int a=0; a<dataList2.size(); a++){
+						ZipVO zv = new ZipVO();
+						zv = dataList2.get(a);
+						if(dong!=null&&dong!=""){
+						%>
+							<option value="<%=zv.getDong() %>" <%if(dong.equals(zv.getDong())){out.println("selected");} %>><%=zv.getDong() %></option>
+						<%}else{%>
+							<option value="<%=zv.getDong() %>" <%if(a==0){out.println("selected");} %>><%=zv.getDong() %></option>
+						<%}
+					} %>		 
+				</select>
+			</div>
+			<div id="searchBtn" onClick="getAddr()">찾기</div>
 		</div>	
 	</div>
 	<div id="smallDesc">
@@ -158,7 +206,7 @@
 					member = lst.get(i);
 				%>
 					<li class="descstyle"><%=member.getHdName()%></li>
-					<li class="descstyle" style="width:500px"><a href="javascript:readBoardGo()"><%=member.getSubJect()%></a></li>
+					<li class="descstyle" style="width:500px"><%=member.getSubJect()%></li>
 					<li class="descstyle"><%=member.getUserId()%></li>
 				<%} %>
 			</ul>		

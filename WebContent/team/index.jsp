@@ -1,17 +1,11 @@
 <%@page import="java.util.StringTokenizer"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-/* 	String id = (String)session.getAttribute("userId");
-	CommunDAO cd = new CommunDAO();	
-	String firstSet= cd.getMalocal(id);
-	StringTokenizer stt = new StringTokenizer(firstSet,"-"); */
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>title here</title>
+
 <link rel="stylesheet" type="text/css" href="css/commun.css" media="all"/>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
 <script src="js/flux.js" type="text/javascript" charset="UTF-8"></script> <!--슬라이드용 JS파일 -->
