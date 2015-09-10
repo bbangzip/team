@@ -618,7 +618,90 @@ public class CommunDAO extends DBConnection{
 			}
 			return r;
 		}
+	
+	//우편번호 검색
+		public List<ZipVO> zipcodeSearch(ZipVO mv){
+			List<ZipVO> lst = new ArrayList<ZipVO>();
+			try{
+				String sql = "select * from zipTbl where doro like '%"+mv.getAddr1()+"%'";
+				dbConn(sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					ZipVO mv2 = new ZipVO();
+					mv2.setZipCode(rs.getString("zipcode"));
+					String addr1 = rs.getString("sido")+rs.getString("gu");
+					addr1+=" "+rs.getString("doro")+" ";
+					
+					String bName = rs.getString("bName");
+					if(bName != null){addr1 += bName;}
+					
+					addr1 +="("+rs.getString("dong")+")";
+					
+					 
+					mv2.setAddr1(addr1);
+					mv2.setAddr2(rs.getInt("zibun1") +"~"+ rs.getInt("zibun2"));
+					
+					lst.add(mv2);
+				}	
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				dbClose();
+			}
+			return lst;
+		}	
 		
+		//(memberEdit.jsp) Member lord 회원정보 
+		public MemberVO selectRecord(String userid){
+			MemberVO mv = new MemberVO();
+			try{
+				String sql ="select username, userpwd, tel, "
+						+ "zipcode, addr1, addr2, mylocal, email"
+						+ " from membertbl where userid=?";
+				dbConn(sql);
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, userid);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					mv.setUserName(rs.getString(1));
+					mv.setUserPwd(rs.getString(2));
+					
+					String tel = rs.getString(3);
+					String telArr[] = tel.split("-");
+					mv.setTel1(telArr[0]);
+					mv.setTel2(telArr[1]);
+					mv.setTel3(telArr[2]);
+				
+					mv.setZipCode(rs.getString(4));
+					mv.setAddr1(rs.getString(5));
+					mv.setAddr2(rs.getString(6));
+					
+					//mv.setMyLocal(rs.getString(7));
+					String myLocal = rs.getString(7);
+					String mlArr[] = new String[2];
+					mlArr = myLocal.split(",");
+
+					mv.setMl1(mlArr[0]);
+					mv.setMl2(mlArr[1]);
+					mv.setMl3(mlArr[2]);
+					mv.setEmail(rs.getString(8));
+					
+					
+				}
+				
+			}catch(Exception e){
+					e.printStackTrace();
+			}finally{
+				try{
+					dbClose();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+			return mv;
+
+		}
 	/*
 	public void ListWrite(){
 		try{

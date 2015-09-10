@@ -47,32 +47,48 @@ function delwin(num){
 }
 </script>
 <style>
+#pWriteBtn input, #homeBtn input, #delBtn input
+{background-color:#FFD9EC;border-radius:5px 5px 5px 5px}
+#pList, #pWriteBtn, #txtLabel, #homeBtn, #pMain{position:absolute;}
+#list li, #pList li, hr{float:left;}
+#list ul, #list li, #pList ul, #pList li{padding:5px; margin:1px;list-style-type:none}
+a, #pList a:link{text-decoration:none}
+
 #list{margin-left:130px}
-.button{margin-left:200px;}
-#list ul, #list li{padding:5px; margin:1px;list-style-type:none}
-#list li{float:left;}
+#delBtn{margin-left:200px;}
+
 #list ul{width:500px;height:120px}
 .lbl1{width:68px;background-color:#BDBDBD}
 .result1{width:158px;background-color:#FAE0D4}
 .result2{width:407px;background-color:#FAE0D4}
 
-#pList{position:absolute; left:200px}
-#pList ul, #pList li{padding:5px; margin:1px; list-style-type:none;}
+#pList{left:25%}
+
 #pList ul{height:40px; }
-#pList li{height:40px; line-height:40px; float:left; text-align:center;
+#pList li{height:40px; line-height:40px;text-align:center;
 			width:40px;}
-#pList li:hover{background-color:yellow}
-#pList a:link{text-decoration:none; color:black}
-hr{width:500px; float:left;}
+#pList li:hover{background-color:#FFDFFF}
+#pList a:link{color:black}
+hr{width:500px;}
 #a{list-style-type:none}
-#pWriteBtn{position:absolute; left:550px; color: rgb(255,90,95)}
+#pWriteBtn{left:555px;}
+
+#txtLabel{left:300px;}
+#homeBtn{left:140px;font-weight:bold;font-size:10px;}
+#pMain{left:20%}
 </style>
 </head>
 <body>
-<label>방명록 리스트 : <%=pNum%></label><br/>
-<label><a href="index.jsp">홈</a></label>
+<div id="pMain">
+<label id="txtLabel">쪽지 보관함 : PAGE-<%=pNum%></label><br/>
+<label id="homeBtn"><input type="button" value="Main Home" onClick="location.href='index.jsp'" onMouseover="this.style.backgroundColor='#EDC7DA'" onMouseout="this.style.backgroundColor='#FFD9EC'"></label>
+	
+<label id="pWriteBtn"><input type="button" value="쪽지쓰기" onClick="location.href='page.jsp'" onMouseover="this.style.backgroundColor='#EDC7DA'" onMouseout="this.style.backgroundColor='#FFD9EC'"></label>
+
 
 <br/>
+
+
 <div id="list">
 <% for(int idx=0; idx<lst.size(); idx++){
 		PageVO gv = lst.get(idx);
@@ -87,7 +103,7 @@ hr{width:500px; float:left;}
 		<li class="lbl1"><label>글내용: </label></li><li class="result2">
 		<%=gv.getText() %></li>
 		</ul>
-		<div class = "button">
+		<div id="delBtn">
 		<input type = "button" value = "삭제" onClick="delwin(<%=gv.getNum()%>)">
 		</div>
 <hr/>
@@ -98,7 +114,7 @@ hr{width:500px; float:left;}
 
 <ul id = "pList">
 <%if(pStart>1){%>
-	<li title="이전페이지 5"><a href="pageList.jsp?num=<%=pStart-pCnt%>">◀ ◀ </a></li>
+	<li title="이전페이지 5"><a href="pageList.jsp?num=<%=pStart-pCnt%>">◀ ◀</a></li>
 	
 	 <%}else{
 	 	%>
@@ -107,16 +123,16 @@ hr{width:500px; float:left;}
 	 <%}
 	 if(pNum>1){
 	 %>
-		<li title="이전페이지"><a href="pageList.jsp?num=<%=pNum-1%>">◀ </a></li>
+		<li title="이전페이지"><a href="pageList.jsp?num=<%=pNum-1%>">◀</a></li>
 	<%}else{%>
 		<li title="X">◀</li>
 
 	<%}
 	for(int i=pStart; i<pStart+pCnt; i++){
 		if(i==pNum){ %>
-			<li style="border:3px solid red"><a href="pageList.jsp?num=<%=i%>"> <%=i%> </a></li>
+			<li style="border:1px solid black; background-color:#E1E1E1"><a href="pageList.jsp?num=<%=i%>"><%=i%></a></li>
 		<%}else{%>
-			<li><a href="pageList.jsp?num=<%=i%>"> <%=i%> </a></li>
+			<li><a href="pageList.jsp?num=<%=i%>"><%=i%></a></li>
 			
 		<%}
 		
@@ -127,23 +143,22 @@ hr{width:500px; float:left;}
 	}
 	
 	if(pNum==tPage){%>
-		<li title="다음페이지">▶ </li>
+		<li title="다음페이지">▶</li>
 		
 	<%}else{%>
-		<li title="다음페이지"><a href="pageList.jsp?num=<%=pNum+1%>">▶ </a></li>
+		<li title="다음페이지"><a href="pageList.jsp?num=<%=pNum+1%>">▶</a></li>
 		
 	<%}%>
 	<%if(pStart+pCnt>tPage){%>
-		<li title="다음페이지5">▶▶ </li>
+		<li title="다음페이지5">▶▶</li>
 	<%}else{%>
-		<li title="다음페이지5"><a href="pageList.jsp?num=<%=pStart+pCnt%>">▶▶ </a></li>
+		<li title="다음페이지5"><a href="pageList.jsp?num=<%=pStart+pCnt%>">▶▶</a></li>
 
 	<%}%>
-	</ul><br/><br/><br/><br/>
-	
-<label id="pWriteBtn"><input type="button" value="쪽지쓰기" onClick="location.href='page.jsp'">
-</label>
- 
+	</ul><br/><br/><br><br>
+
+ </div>
+ <br>
 
 </body>
 </html>

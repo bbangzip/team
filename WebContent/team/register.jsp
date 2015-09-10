@@ -42,7 +42,7 @@
 		
 	}
 	function zipWin(){
-		window.open("zipSearch.jsp","zipWin","width=500, heigth=500")
+		window.open("zipSearch.jsp","zipWin","width=400, heigth=400")
 	}
 </script>
 </head>
@@ -81,7 +81,7 @@
 <!-- 7 -->	<li><input type="text" id="name" name="userName"></li>
 <!-- 8 -->	<li><input type="text" id="zipCode" name="zipCode" maxlength="5">
 				<input type="button" value="검색" onClick="zipWin()"></li>
-<!-- 9 -->	<li><input type="text" id="addr1" name="addr1"></li>
+<!-- 9 -->	<li><input type="text" id="addr1" name="addr1" size="40"></li>
 <!-- 10 -->	<li><input type="text" id="addr2" name="addr2"  size="40" ></li>
 <!-- 11 -->	<li><select name="tel1"><option value="010">010</option></select>-<input type="text" style="width:60px" id="tel2" name="tel2" maxlength="4">-<input type="text" style=width:60px id="tel3" name="tel3" maxlength="4"></li>
 <!-- 12 -->	<li><input type="text" id="email" name="email"></li>
